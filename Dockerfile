@@ -1,10 +1,10 @@
-FROM ubuntu:22.04
-
-LABEL org.opencontainers.image.authors="Robin Smidsrød <robin@smidsrod.no>"
+FROM debian:bookworm
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN yes | unminimize
+# RUN yes | unminimize
+RUN useradd -ms /bin/bash dhcpd
+# RUN groupadd dhcpd
 
 RUN apt-get -q -y update \
  && apt-get -q -y -o "DPkg::Options::=--force-confold" -o "DPkg::Options::=--force-confdef" install \
